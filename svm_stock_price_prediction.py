@@ -48,3 +48,31 @@ X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, 
 # # 5️⃣ Train SVM model
 svm_model = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=0.1)
 svm_model.fit(X_train, y_train)
+
+
+
+# # 6️⃣ Make predictions
+y_pred = svm_model.predict(X_test)
+
+# # 7️⃣ Evaluate model
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+r2 = r2_score(y_test, y_pred)
+print(f"\n📊 Model Performance:")
+print(f"RMSE: {rmse:.2f}")
+print(f"R² Score: {r2:.2f}")
+
+# # 8️⃣ Plot predictions vs actual
+plt.figure(figsize=(10, 6))
+plt.plot(y_test.values[:100], label='Actual Price', color='blue')
+plt.plot(y_pred[:100], label='Predicted Price', color='red')
+plt.title('Stock Market Price Prediction using SVM')
+plt.xlabel('Sample')
+plt.ylabel('Price')
+plt.legend()
+plt.show()
+
+# # 9️⃣ Predict Next Day Price (example)
+# # Using the last row in dataset as input
+last_row = X_scaled[-1].reshape(1, -1)
+predicted_next_price = svm_model.predict(last_row)[0]
+print(f"\n💰 Predicted Next Day Close Price: {predicted_next_price:.2f}")
