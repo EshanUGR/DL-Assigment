@@ -20,3 +20,18 @@ data = pd.read_csv("data/stock_data.csv")
 # Show first few rows
 print("Dataset preview:")
 print(data.head())
+
+
+
+
+# 2️⃣ Select features and target
+
+# Predict 'Close' price
+data = data.dropna()
+X = data[['Open Price', 'High Price', 'Low Price']]
+
+y = data['Close Price']
+print(data.columns)
+# # 3️⃣ Normalize the features
+scaler = MinMaxScaler()
+X_scaled = scaler.fit_transform(X)
