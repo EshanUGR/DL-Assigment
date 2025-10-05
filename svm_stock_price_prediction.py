@@ -7,3 +7,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error, r2_score
+
+
+
+
+
+# 1️⃣ Load Dataset
+data = pd.read_csv("data/stock_data.csv")
+
