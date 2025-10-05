@@ -15,3 +15,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 # 1️⃣ Load Dataset
 data = pd.read_csv("data/stock_data.csv")
 
+
+
+# Show first few rows
+print("Dataset preview:")
+print(data.head())
